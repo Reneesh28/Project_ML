@@ -1,0 +1,15 @@
+venv/
+__pycache__/
+.ipynb_checkpoints/
+*.pkl
+*.h5
+*.zip
+*.rar
+*.7z
+*.csv
+*.db
+*.sqlite3
+*.log
+*.mp4
+*.avi
+*.mkv
