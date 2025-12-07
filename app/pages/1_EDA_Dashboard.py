@@ -1,34 +1,42 @@
 import streamlit as st
-import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
+from utils.eda_plots import (
+    load_main_data, get_basic_info, get_summary_stats, get_missing_values,
+    get_sample_for_eda, plot_sales_over_time, plot_monthly_seasonality,
+    plot_weekday_seasonality, plot_store_distribution, plot_item_distribution,
+    plot_correlation_heatmap
+)
 
-st.set_page_config(layout="wide")
+def main():
+    st.title("📊 EDA Dashboard")
+    df = load_main_data()
 
-st.title("📊 EDA Dashboard")
+    st.subheader("Dataset Info")
+    info = get_basic_info(df)
+    st.json(info)
 
-st.write("""
-This dashboard provides insights into the Store Item Demand dataset.
-""")
+    st.subheader("Sample Data")
+    st.dataframe(get_sample_for_eda(df))
 
-# Load data
-df = pd.read_csv("../datasets/main/store_item_demand.csv", parse_dates=["date"])
+    st.subheader("Summary Stats")
+    st.dataframe(get_summary_stats(df))
 
-st.subheader("Dataset Preview")
-st.dataframe(df.head())
+    missing = get_missing_values(df)
+    if not missing.empty:
+        st.subheader("Missing Values")
+        st.dataframe(missing)
 
-st.subheader("Sales Over Time (Sample)")
-sample = df[df["store"] == 1].head(200)  # lighter for display
+    st.subheader("Sales Over Time")
+    st.pyplot(plot_sales_over_time(df))
 
-plt.figure(figsize=(12, 4))
-plt.plot(sample["date"], sample["sales"])
-plt.xlabel("Date")
-plt.ylabel("Sales")
-plt.title("Sample Sales Trend")
-plt.tight_layout()
-st.pyplot()
+    st.subheader("Seasonality")
+    st.pyplot(plot_monthly_seasonality(df))
+    st.pyplot(plot_weekday_seasonality(df))
 
-st.subheader("Correlation Heatmap")
-plt.figure(figsize=(6, 4))
-sns.heatmap(df[["store", "item", "sales"]].corr(), annot=True, cmap="coolwarm")
-st.pyplot()
+    st.subheader("Store Distribution")
+    st.pyplot(plot_store_distribution(df))
+
+    st.subheader("Item Distribution")
+    st.pyplot(plot_item_distribution(df))
+
+    st.subheader("Correlation")
+    st.pyplot(plot_correlation_heatmap(df))
