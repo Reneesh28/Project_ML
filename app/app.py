@@ -1,18 +1,18 @@
 import streamlit as st
 import importlib
 
-# --------------------------------------
+
 # Page Configuration
-# --------------------------------------
+
 st.set_page_config(
     page_title="Demand Forecasting App",
     page_icon="📈",
     layout="wide"
 )
 
-# --------------------------------------
+
 # Sidebar Navigation
-# --------------------------------------A
+
 st.sidebar.title("📂 Navigation")
 
 page = st.sidebar.radio(
@@ -26,18 +26,18 @@ page = st.sidebar.radio(
     ]
 )
 
-# --------------------------------------
+
 # Dynamic Page Loader
-# --------------------------------------
+
 
 def load_page(module_name):
     module = importlib.import_module(module_name)
     module.main()
 
 
-# --------------------------------------
+
 # Page Routing
-# --------------------------------------
+
 if page == "🏠 Home":
     st.title("📈 Store Item Demand Forecasting App")
 

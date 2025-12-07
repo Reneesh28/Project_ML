@@ -8,9 +8,9 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 
-# ---------------------------------------------------------------------
+
 # 1. Data loading helper
-# ---------------------------------------------------------------------
+
 def get_default_data_path() -> str:
     """
     Returns the default path to the main dataset, assuming this file
@@ -41,9 +41,9 @@ def load_main_data(csv_path: Optional[str] = None) -> pd.DataFrame:
     return df
 
 
-# ---------------------------------------------------------------------
+
 # 2. Basic info & summary helpers
-# ---------------------------------------------------------------------
+
 def get_basic_info(df: pd.DataFrame) -> Dict[str, Any]:
     """
     Return a small dictionary with basic dataset info
@@ -79,9 +79,8 @@ def get_missing_values(df: pd.DataFrame) -> pd.DataFrame:
     return result
 
 
-# ---------------------------------------------------------------------
 # 3. Time-series plots
-# ---------------------------------------------------------------------
+
 def plot_sales_over_time(
     df: pd.DataFrame,
     store: Optional[int] = None,
@@ -131,9 +130,8 @@ def plot_sales_over_time(
     return fig
 
 
-# ---------------------------------------------------------------------
 # 4. Seasonality: month and weekday
-# ---------------------------------------------------------------------
+
 def plot_monthly_seasonality(df: pd.DataFrame):
     """
     Plot average sales by calendar month.
@@ -168,9 +166,8 @@ def plot_weekday_seasonality(df: pd.DataFrame):
     return fig
 
 
-# ---------------------------------------------------------------------
 # 5. Distributions: store, item, top items
-# ---------------------------------------------------------------------
+
 def plot_store_distribution(df: pd.DataFrame):
     """
     Plot total sales per store.
@@ -201,9 +198,8 @@ def plot_item_distribution(df: pd.DataFrame, top_n: int = 20):
     return fig
 
 
-# ---------------------------------------------------------------------
 # 6. Correlation heatmap
-# ---------------------------------------------------------------------
+
 def plot_correlation_heatmap(df: pd.DataFrame):
     """
     Plot a correlation heatmap for numeric columns.
@@ -218,9 +214,9 @@ def plot_correlation_heatmap(df: pd.DataFrame):
     return fig
 
 
-# ---------------------------------------------------------------------
+
 # 7. Helper for quick sample subset (for EDA page)
-# ---------------------------------------------------------------------
+
 def get_sample_for_eda(df: pd.DataFrame, max_rows: int = 5000) -> pd.DataFrame:
     """
     Return a smaller sample of the dataset for display/preview purposes.
