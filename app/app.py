@@ -31,8 +31,6 @@ def load_page(module_name):
     module = importlib.import_module(module_name)
     module.main()
 
-
-
 # Page Routing
 
 if page == "🏠 Home":
