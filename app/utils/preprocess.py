@@ -4,7 +4,6 @@ import pandas as pd
 def add_time_features(df):
     # Ensure date is datetime
     df['date'] = pd.to_datetime(df['date'], errors='coerce')
-
     df['year'] = df['date'].dt.year
     df['month'] = df['date'].dt.month
     df['day'] = df['date'].dt.day
