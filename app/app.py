@@ -26,10 +26,7 @@ page = st.sidebar.radio(
     ]
 )
 
-
 # Dynamic Page Loader
-
-
 def load_page(module_name):
     module = importlib.import_module(module_name)
     module.main()
