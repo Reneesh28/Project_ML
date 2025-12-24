@@ -15,8 +15,10 @@
     "@react-three/fiber": "^9.4.2",
     "@tailwindcss/vite": "^4.1.18",
     "lucide-react": "^0.562.0",
+    "module-alias": "^2.2.3",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
+    "react-router-dom": "^7.11.0",
     "tailwindcss": "^4.1.18",
     "three": "^0.182.0",
     "zustand": "^5.0.9"
